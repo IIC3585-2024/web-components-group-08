@@ -86,6 +86,17 @@ class SellItem extends LitElement {
     }
   `;
 
+  constructor() {
+    super();
+    this.image =
+      "https://curie.pnnl.gov/sites/default/files/default_images/default-image_0.jpeg";
+    this.title = "Product Name";
+    this.price = "XXXX";
+    this.discountPrice = "";
+    this.discount = "";
+    this.rating = 0;
+  }
+
   renderStars() {
     const stars = [];
     for (let i = 0; i < 5; i++) {
