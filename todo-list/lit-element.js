@@ -1,4 +1,9 @@
-import { LitElement, html, css } from "lit";
+// import { LitElement, html, css } from "lit";
+import {
+  html,
+  css,
+  LitElement,
+} from "https://cdn.jsdelivr.net/gh/lit/dist@2.4.0/core/lit-core.min.js";
 
 class LitTodoList extends LitElement {
   static properties = {
