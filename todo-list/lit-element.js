@@ -31,11 +31,11 @@ class LitTodoList extends LitElement {
 
   constructor() {
     super();
-    this.title = "";
+    this.title = "To Do List";
     this.item1 = "";
     this.item2 = "";
     this.item3 = "";
-    this.prompt = "";
+    this.prompt = "Add new element";
     this.items = [this.item1, this.item2, this.item3].filter((item) => item);
   }
 
@@ -46,9 +46,9 @@ class LitTodoList extends LitElement {
         <input
           type="text"
           placeholder="${this.prompt}"
-          @input=${this.updateInput}
+          @input=${this.handleInput}
         />
-        <button @click=${this.addItem}>Add</button>
+        <button @click=${this.addNewToDoItem}>Add</button>
         <ul>
           ${this.items.map(
             (item) => html` <li class="todo-item">
@@ -60,19 +60,19 @@ class LitTodoList extends LitElement {
     `;
   }
 
-  updateInput(event) {
+  handleInput(event) {
     this.currentInput = event.target.value;
   }
 
-  addItem() {
+  addNewToDoItem() {
     if (this.currentInput) {
       this.items = [...this.items, this.currentInput];
       this.currentInput = "";
     }
   }
 
-  removeItem(item) {
-    this.items = this.items.filter((i) => i !== item);
+  removeItem(itemToRemove) {
+    this.items = this.items.filter((item) => item !== itemToRemove);
   }
 }
 
