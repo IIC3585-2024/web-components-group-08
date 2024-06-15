@@ -1,0 +1,53 @@
+<template id="sell-item-template">
+  <style>
+    .sell-item {
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .sell-item img {
+      max-width: 100%;
+    }
+    .price {
+      font-size: 1.5em;
+      color: #333;
+    }
+    .discount-price {
+      font-size: 1.2em;
+      color: red;
+    }
+  </style>
+  <div class="sell-item">
+    <img id="image" src="" alt="Product Image" />
+    <div class="title"></div>
+    <div class="price"></div>
+    <div class="discount-price"></div>
+    <div class="rating"></div>
+  </div>
+</template>
+
+<script>
+  class SellItem extends HTMLElement {
+    constructor() {
+      super();
+      const template = document.getElementById("sell-item-template").content;
+      const shadowRoot = this.attachShadow({ mode: "open" });
+      shadowRoot.appendChild(template.cloneNode(true));
+    }
+
+    connectedCallback() {
+      this.shadowRoot.querySelector("#image").src = this.getAttribute("image");
+      this.shadowRoot.querySelector(".title").textContent =
+        this.getAttribute("title");
+      this.shadowRoot.querySelector(".price").textContent =
+        this.getAttribute("price");
+      this.shadowRoot.querySelector(".discount-price").textContent =
+        this.getAttribute("discount-price");
+      this.shadowRoot.querySelector(".rating").textContent =
+        this.getAttribute("rating");
+    }
+  }
+
+  customElements.define("sell-item", SellItem);
+</script>
