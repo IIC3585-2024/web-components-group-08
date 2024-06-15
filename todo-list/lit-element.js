@@ -29,13 +29,24 @@ class LitTodoList extends LitElement {
     }
   `;
 
+  // constructor() {
+  //   super();
+  //   this.title = "To Do List";
+  //   this.item1 = "";
+  //   this.item2 = "";
+  //   this.item3 = "";
+  //   this.prompt = "Add new element";
+  //   this.items = [this.item1, this.item2, this.item3].filter((item) => item);
+  // }
+
   constructor() {
     super();
     this.title = "To Do List";
-    this.item1 = "";
-    this.item2 = "";
-    this.item3 = "";
     this.prompt = "Add new element";
+    this.items = [];
+  }
+
+  firstUpdated() {
     this.items = [this.item1, this.item2, this.item3].filter((item) => item);
   }
 
