@@ -147,6 +147,7 @@ class LitTodoList extends LitElement {
     if (this.currentInput) {
       this.items = [...this.items, this.currentInput];
       this.currentInput = "";
+      this.shadowRoot.querySelector("input").value = "";
     }
   }
 
@@ -156,3 +157,6 @@ class LitTodoList extends LitElement {
 }
 
 customElements.define("lit-todo-list", LitTodoList);
+
+// https://medium.com/@westbrook/litelement-to-do-app-1e08a31707a4
+// https://stackoverflow.com/questions/68614776/using-lit-with-javascript-and-no-build-tools
