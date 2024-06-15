@@ -34,16 +34,16 @@ class SellItem extends LitElement {
       color: #333;
       margin: 10px 0;
     }
+    .price-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px 0;
+    }
     .price {
       font-size: 1.5em;
       color: #007bff;
-      margin: 10px 0;
-    }
-    .discount-price {
-      font-size: 1.2em;
-      color: red;
-      text-decoration: line-through;
-      margin: 5px 0;
+      margin-right: 10px;
     }
     .discount {
       background-color: #dc3545;
@@ -52,7 +52,22 @@ class SellItem extends LitElement {
       border-radius: 5px;
       font-size: 1em;
       display: inline-block;
-      margin: 5px 0;
+    }
+    .discount-price-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px 0;
+    }
+    .discount-price-text {
+      margin-right: 5px;
+      font-size: 1em;
+      color: #333;
+    }
+    .discount-price {
+      font-size: 1em;
+      color: red;
+      text-decoration: line-through;
     }
     .rating {
       display: flex;
@@ -67,13 +82,14 @@ class SellItem extends LitElement {
     }
     .star {
       color: #ffcc00;
+      font-size: 1.2em;
     }
   `;
 
   renderStars() {
     const stars = [];
     for (let i = 0; i < 5; i++) {
-      if (i < this.rating) {
+      if (i < Math.floor(this.rating)) {
         stars.push(html`<span class="star">&#9733;</span>`);
       } else {
         stars.push(html`<span class="star">&#9734;</span>`);
@@ -87,9 +103,18 @@ class SellItem extends LitElement {
       <div class="sell-item">
         <img src="${this.image}" alt="Product Image" />
         <div class="title">${this.title}</div>
-        <div class="price">${this.discountPrice}</div>
-        <div class="discount">${this.discount}</div>
-        <div class="discount-price">Normal: ${this.price}</div>
+        ${this.discountPrice && this.discount
+          ? html`
+              <div class="price-container">
+                <div class="price">$${this.discountPrice}</div>
+                <div class="discount">${this.discount}</div>
+              </div>
+              <div class="discount-price-container">
+                <div class="discount-price-text">Normal:</div>
+                <div class="discount-price">$${this.price}</div>
+              </div>
+            `
+          : html`<div class="price">$${this.price}</div>`}
         <div class="rating">
           ${this.renderStars()}
           <span>${this.rating}</span>
