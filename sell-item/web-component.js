@@ -1,6 +1,6 @@
-const template = document.createElement('template');
+const sellItemTemplate = document.createElement('template');
 
-template.innerHTML = `
+sellItemTemplate.innerHTML = `
   <style>
     .sell-item {
       border: 1px solid #ddd;
@@ -76,7 +76,10 @@ template.innerHTML = `
     <img id="image" src="" alt="Product Image" />
     <div class="title"></div>
     <div class="price"></div>
-    <div class="discount-price"></div>
+    <div class="discount-price-container">
+        <div class="discount-price-text">Precio Normal:</div>
+        <div class="discount-price"></div>
+    </div>
     <div class="rating"></div>
   </div>
 `;
@@ -85,7 +88,7 @@ class SellItem extends HTMLElement {
     constructor() {
       super();
       const shadowRoot = this.attachShadow({ mode: "open" });
-      shadowRoot.appendChild(template.content.cloneNode(true));
+      shadowRoot.appendChild(sellItemTemplate.content.cloneNode(true));
     }
 
     connectedCallback() {
@@ -95,7 +98,7 @@ class SellItem extends HTMLElement {
       this.shadowRoot.querySelector(".price").textContent =
         "$" + this.getAttribute("price");
       this.shadowRoot.querySelector(".discount-price").textContent =
-        "$" + this.getAttribute("discount-price");
+         "$" + this.getAttribute("discount-price");
       this.shadowRoot.querySelector(".rating").innerHTML =
         this.renderStars(this.getAttribute("rating"));
     }
@@ -109,7 +112,7 @@ class SellItem extends HTMLElement {
             stars.push(`<span class="star">&#9734;</span>`);
         }
         }
-        return stars;
+        return stars.join("");
     }
 
   }
