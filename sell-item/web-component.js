@@ -97,8 +97,14 @@ class SellItem extends HTMLElement {
         this.getAttribute("title");
       this.shadowRoot.querySelector(".price").textContent =
         "$" + this.getAttribute("price");
-      this.shadowRoot.querySelector(".discount-price").textContent =
-         "$" + this.getAttribute("discount-price");
+      const discountPrice = this.getAttribute("discount-price");
+      const discountPriceElement = this.shadowRoot.querySelector(".discount-price");
+      const discountPriceContainer = this.shadowRoot.querySelector(".discount-price-container");
+      if (discountPrice) {
+        discountPriceElement.textContent = "$" + discountPrice;
+      } else {
+        discountPriceContainer.style.display = "none";
+      }
       this.shadowRoot.querySelector(".rating").innerHTML =
         this.renderStars(this.getAttribute("rating"));
     }
