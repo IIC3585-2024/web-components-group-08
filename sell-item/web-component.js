@@ -84,6 +84,10 @@ sellItemTemplate.innerHTML = `
   </div>
 `;
 
+const defaultImage = "https://curie.pnnl.gov/sites/default/files/default_images/default-image_0.jpeg";
+const defaultName = "Product Name";
+const defaultPrice = "XXXX";
+
 class SellItem extends HTMLElement {
     constructor() {
       super();
@@ -92,19 +96,17 @@ class SellItem extends HTMLElement {
     }
 
     connectedCallback() {
-      this.shadowRoot.querySelector("#image").src = this.getAttribute("image");
+
+      this.shadowRoot.querySelector("#image").src = this.getAttribute("image") || defaultImage;
       this.shadowRoot.querySelector(".title").textContent =
-        this.getAttribute("title");
+        this.getAttribute("title") || defaultName;
       this.shadowRoot.querySelector(".price").textContent =
-        "$" + this.getAttribute("price");
+        "$" + (this.getAttribute("price") || defaultPrice);
       const discountPrice = this.getAttribute("discount-price");
       const discountPriceElement = this.shadowRoot.querySelector(".discount-price");
       const discountPriceContainer = this.shadowRoot.querySelector(".discount-price-container");
-      if (discountPrice) {
-        discountPriceElement.textContent = "$" + discountPrice;
-      } else {
-        discountPriceContainer.style.display = "none";
-      }
+      discountPriceElement.textContent = "$" + discountPrice;
+      if (!discountPrice) discountPriceContainer.style.display = "none";
       this.shadowRoot.querySelector(".rating").innerHTML =
         this.renderStars(this.getAttribute("rating"));
     }
