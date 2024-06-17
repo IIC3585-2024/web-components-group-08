@@ -9,7 +9,7 @@ La página contiene dos columnas:
 - **LitElement**: Muestra una lista de tareas y artículos en venta implementados con LitElement.
 - **Web Component**: Muestra una lista de tareas y artículos en venta implementados con Web Component nativo.
 
-Cada columna está separada por un divisor y tiene un diseño estilizado para mejorar la visualización y comparación de ambas tecnologías.
+En ambos casos los componentes son los mismos, solo variando en su implementación, además de algunas diferencias leves.
 
 ## Requisitos
 
