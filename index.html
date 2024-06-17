@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Web Components Demo</title>
     <script type="module" src="./todo-list/lit-element.js"></script>
+
+    <script src="./sell-item/web-component.js"></script>
+    <script src="./todo-list/web-component.js"></script>
     <script type="module" src="./sell-item/lit-element.js"></script>
   </head>
   <body>
@@ -22,6 +25,16 @@
     <hr />
 
     <!-- To do List con Web component -->
+
+    <h1>Tottus</h1>
+
+    <todo-list
+      item1="Copiarle el codigo a vini"
+      item2="Hacerle la tarea entera a akel"
+      item3="Ganarle a LeBron"
+      prompt="Añadir nuevo elemento"
+      title="Tareas Pendientes"
+    ></todo-list>
 
     <!-- Sell item con LitElement -->
     <lit-sell-item
@@ -41,6 +54,16 @@
     <lit-sell-item title="Super TORRE" price="1000 dolares"></lit-sell-item>
     <lit-sell-item></lit-sell-item>
 
+
     <!-- Sell item con Web component -->
+
+    <h1>Tottus</h1>
+    <sell-item 
+    title="Lebron"
+    image="./sell-item/god.jpg"
+    price="50"
+    discount-price="500000000"
+    rating="4.5"></sell-item>
+
   </body>
 </html>
