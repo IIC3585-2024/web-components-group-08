@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Web Components Demo</title>
     <script type="module" src="./todo-list/lit-element.js"></script>
+    <script type="module" src="./sell-item/lit-element.js"></script>
   </head>
   <body>
     <!-- To do List con LitElement -->
@@ -16,9 +17,29 @@
       prompt="Añadir nuevo elemento"
       title="Tareas Pendientes"
     ></lit-todo-list>
+    <hr />
+    <lit-todo-list></lit-todo-list>
+    <hr />
+
     <!-- To do List con Web component -->
 
     <!-- Sell item con LitElement -->
+    <lit-sell-item
+      image="https://m.media-amazon.com/images/I/715zrA5cmLL._AC_SL1500_.jpg"
+      title="Super TORRE"
+      price="1000 dolares"
+      discountPrice="500 dolares"
+      discount="50%"
+      rating="2"
+    ></lit-sell-item>
+    <lit-sell-item
+      image="https://m.media-amazon.com/images/I/715zrA5cmLL._AC_SL1500_.jpg"
+      title="Super TORRE"
+      price="1000 dolares"
+      rating="2"
+    ></lit-sell-item>
+    <lit-sell-item title="Super TORRE" price="1000 dolares"></lit-sell-item>
+    <lit-sell-item></lit-sell-item>
 
     <!-- Sell item con Web component -->
   </body>
