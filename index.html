@@ -1,69 +1,83 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web Components Demo</title>
-    <script type="module" src="./todo-list/lit-element.js"></script>
 
-    <script src="./sell-item/web-component.js"></script>
-    <script src="./todo-list/web-component.js"></script>
-    <script type="module" src="./sell-item/lit-element.js"></script>
-  </head>
-  <body>
-    <!-- To do List con LitElement -->
-    <h1>Vini</h1>
-    <lit-todo-list
-      item1="Primera"
-      item2="Segunda"
-      item3="Tercera"
-      prompt="Añadir nuevo elemento"
-      title="Tareas Pendientes"
-    ></lit-todo-list>
-    <hr />
-    <lit-todo-list></lit-todo-list>
-    <hr />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Components Demo</title>
+  <script type="module" src="./todo-list/lit-element.js"></script>
+
+  <script src="./sell-item/web-component.js"></script>
+  <script src="./todo-list/web-component.js"></script>
+  <script type="module" src="./sell-item/lit-element.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1em; 
+      padding: 20px;
+      background-color: #fff; 
+      border-radius: 10px; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    }
+
+  </style>
+</head>
+<body>
+  <!-- To do List con LitElement -->
+  <div id="comparison-div" style="display: flex; flex-direction: row; justify-content: space-evenly; align-items: flex-start;" >
+    <div id="lit-element-part">
+      <div class="column">
+        <h1>LitElement</h1>
+        <lit-todo-list  item1="Utilizar codigo ajeno" item2="Usar rails para TODO" item3="Ganarle a LeBron" prompt="Añadir nuevo elemento"
+          title="Tareas Pendientes"></lit-todo-list>
+
+        <!-- Sell item con LitElement -->
+        <lit-sell-item title="Lebron" image="./sell-item/god.jpg" price="500000000" discountPrice="50" discount="99%"
+        rating="4.5" ></lit-sell-item >
+
+        <lit-sell-item image="https://m.media-amazon.com/images/I/715zrA5cmLL._AC_SL1500_.jpg" title="Super TORRE"
+          price="1000 dolares" discountPrice="500 dolares" discount="50%" rating="2"></lit-sell-item>
+        <lit-sell-item image="https://i.pinimg.com/originals/7e/51/53/7e5153fea10317b079eca79431f3d2b9.jpg" title="Parka fachera"
+          price="1000 dolares" rating="2"></lit-sell-item>
+          <lit-sell-item></lit-sell-item>
+      </div>
+    </div>
 
     <!-- To do List con Web component -->
+    <div id="web-component-part">
+      <div class="column">
+        <h1>Web component</h1>
+        <todo-list item1="Utilizar codigo ajeno" item2="Usar rails para TODO" item3="Ganarle a LeBron"
+          prompt="Añadir nuevo elemento" title="Tareas Pendientes"></todo-list>
 
-    <h1>Tottus</h1>
+        <!-- Sell item con Web component -->
+        <sell-item title="Lebron" image="./sell-item/god.jpg" price="50" discount-price="500000000"
+          rating="4.5"></sell-item>
 
-    <todo-list
-      item1="Copiarle el codigo a vini"
-      item2="Hacerle la tarea entera a akel"
-      item3="Ganarle a LeBron"
-      prompt="Añadir nuevo elemento"
-      title="Tareas Pendientes"
-    ></todo-list>
+        <sell-item image="https://m.media-amazon.com/images/I/715zrA5cmLL._AC_SL1500_.jpg" title="Super TORRE"
+          price="500 dolares"  discount-price="1000 dolares" discount="50%" rating="2"></sell-item>
+        <sell-item image="https://i.pinimg.com/originals/7e/51/53/7e5153fea10317b079eca79431f3d2b9.jpg" title="Parka fachera"
+          price="1000 dolares" rating="2"></sell-item>
+          <sell-item></sell-item>
+      </div>
+    </div>
+  </div>
+</body>
 
-    <!-- Sell item con LitElement -->
-    <lit-sell-item
-      image="https://m.media-amazon.com/images/I/715zrA5cmLL._AC_SL1500_.jpg"
-      title="Super TORRE"
-      price="1000 dolares"
-      discountPrice="500 dolares"
-      discount="50%"
-      rating="2"
-    ></lit-sell-item>
-    <lit-sell-item
-      image="https://m.media-amazon.com/images/I/715zrA5cmLL._AC_SL1500_.jpg"
-      title="Super TORRE"
-      price="1000 dolares"
-      rating="2"
-    ></lit-sell-item>
-    <lit-sell-item title="Super TORRE" price="1000 dolares"></lit-sell-item>
-    <lit-sell-item></lit-sell-item>
-
-
-    <!-- Sell item con Web component -->
-
-    <h1>Tottus</h1>
-    <sell-item 
-    title="Lebron"
-    image="./sell-item/god.jpg"
-    price="50"
-    discount-price="500000000"
-    rating="4.5"></sell-item>
-
-  </body>
 </html>
